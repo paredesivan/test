@@ -18,7 +18,8 @@ module.exports = function(config) {
       '../www/lib/ionic/js/ionic.bundle.js', // Dependency
       '../www/lib/angular-mocks/angular-mocks.js', // Aux
       '../www/lib/angular-local-storage/dist/angular-local-storage.min.js', // Aux
-      '../www/js/app.js', // AUT
+      //'../www/js/app.js', // AUT
+      '../www/js/services/LocalService.js', // AUT
       '../tests/**/*-test.js' // Suite programado con jasmine
     ],
 
