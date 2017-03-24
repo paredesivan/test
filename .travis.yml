@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "v5.7.0"
+before_script:
+  - npm install -g bower karma-cli gulp-cli
+  - cd calculadora && npm install && bower install
+script:
+  - pwd
+  - karma start tests/karma.config.js
+
+
