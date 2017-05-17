@@ -12,12 +12,13 @@ describe("probando modulo factories", function () {
         ls = BaseDatosService;
     }));
 
+    //prueba normal de llamada
     it("pueba espia", function () {
         expect(ls.inicial(5)).toBe(true);
     });
 
     it("pueba espia", function () {
-        spyOn(ls, "aespiar"); //pongo un espia cuando llama a inicial
+        spyOn(ls, "aespiar"); //pongo un espia cuando llama a inicial. esta linea se pone antes que la llamada a inicial. define el mock/impostor/doble/fake function
         ls.inicial(4);
         expect(ls.aespiar).toHaveBeenCalledWith(5); //verifica que aespiar sea llamada con un 5 dentro de la funcion
 
@@ -26,14 +27,12 @@ describe("probando modulo factories", function () {
     it("pueba espia", function () {
         spyOn(ls, "aespiar");
         ls.inicial(4);
-        expect(ls.aespiar).toHaveBeenCalled(); //devuelve true si inicial llama a "aespiar"
+        expect(ls.aespiar).toHaveBeenCalled(); //devuelve true si inicial llama a "aespiar". solo verifica si lo llama
     });
 
     it("pueba espia", function () {
-        spyOn(ls, "aespiar").and.returnValue(6); //pongo un espia cuando llama a inicial
-        ls.inicial(4);
-        expect(ls.aespiar).toHaveBeenCalled(); //y veo como inicial la llama a "aespiar"
-        expect(ls.aespiar()).toBe(6); //si va a andar porque el spyon devuleve undefined
+        spyOn(ls, "aespiar").and.returnValue(true); //define que cada vez que se llame a aespiar devuelva true
+        expect(ls.devuelve1o2(0)).toBe(1); //
     });
 
     it("pueba espia", function () {
@@ -43,10 +42,10 @@ describe("probando modulo factories", function () {
     });
 
     it("pueba espia", function () {
-        spyOn(ls,"aespiar").and.returnValue(6); //pongo un espia cuando llama a inicial. simulo que retorno 6
+        spyOn(ls, "aespiar").and.returnValue(8); //pongo un espia cuando llama a inicial. simulo que retorno 6
         ls.inicial(4);
-        expect(ls.aespiar).toHaveBeenCalledWith(5);
-        expect(ls.inicial(4)).toBe(6);
+        expect(ls.aespiar).toHaveBeenCalledWith(5); //verifica que aespiar se llame con un 5, previo tengo que llamar a inicial con un 4 para que ande
+        expect(ls.inicial(4)).toBe(8); //verifica el resultado que sea 8
     });
 
     it("pueba espia", function () {
@@ -58,7 +57,7 @@ describe("probando modulo factories", function () {
 
 
     //corro el test para ver si esta definido el servicio local
-    xit('prueba guardarenlocastorage', function () {
+    it('prueba guardarenlocastorage', function () {
         //expect(ls).toBeDefined(); //verifica que este definida la factory
         //expect(ls.guardarEnLocalStorage).toBeDefined(); //verifica que este definida la funcion de la factory
         expect(ls.guardarEnLocalStorage(null, 5)).toEqual(jasmine.objectContaining({

@@ -24,7 +24,15 @@ angular.module('starter.factories', ['LocalStorageModule'])
             inicial: function (valor) {
                 var add = valor + 1;
                 var respuesta = this.aespiar(add);
+
                 return respuesta;
+            },
+
+            devuelve1o2: function (valor) {
+                var add = valor + 1;
+                var respuesta = this.aespiar(add);
+
+                if (respuesta) return 1; else return 2;
             },
 
             aespiar: function (valor) {
