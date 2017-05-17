@@ -3,6 +3,7 @@
 describe("probando modulo factories", function () {
     var ls;
 
+    //agregando prubea/
     //cargo el modulo starter.factories
     beforeEach(module('starter.factories'));
 
