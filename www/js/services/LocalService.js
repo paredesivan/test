@@ -21,6 +21,14 @@ angular.module('starter.factories', ['LocalStorageModule'])
 
     .factory('BaseDatosService', function (localStorageService) {
         return {
+            inicial: function (valor) {
+                return this.aespiar(++valor);
+            },
+
+            aespiar: function (valor) {
+                valor = valor + 1;
+                return valor;
+            },
             guardarEnLocalStorage: function (nombre, valor) {
                 var msg = {};
 

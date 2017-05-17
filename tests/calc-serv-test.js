@@ -11,6 +11,57 @@ describe("probando modulo factories", function () {
         ls = BaseDatosService;
     }));
 
+    it("pueba espia", function () {
+        //spyOn(ls, "aespiar"); //pongo un espia cuando llama a inicial
+        //ls.inicial(4);
+        //expect(ls.aespiar).toHaveBeenCalledWith(5);
+        expect(ls.inicial(5)).toBe(7);
+
+    });
+
+    it("pueba espia", function () {
+        spyOn(ls, "aespiar"); //pongo un espia cuando llama a inicial
+        ls.inicial(4);
+        expect(ls.aespiar).toHaveBeenCalledWith(5); //y veo como inicial la llama a "aespiar"
+
+    });
+
+    it("pueba espia", function () {
+        spyOn(ls, "aespiar");
+        ls.inicial(4);
+        expect(ls.aespiar).toHaveBeenCalled(); //y veo como inicial la llama a "aespiar"
+        //expect(ls.aespiar()).toBe(6); //no va a andar porque el spyon devuleve undefined
+
+    });
+
+    it("pueba espia", function () {
+        spyOn(ls, "aespiar").and.returnValue(6); //pongo un espia cuando llama a inicial
+        ls.inicial(4);
+        expect(ls.aespiar).toHaveBeenCalled(); //y veo como inicial la llama a "aespiar"
+        expect(ls.aespiar()).toBe(6); //si va a andar porque el spyon devuleve undefined
+    });
+
+    it("pueba espia", function () {
+        ls.aespiar = jasmine.createSpy("pipipiar"); //pongo un espia cuando llama a inicial
+        ls.inicial(4);
+        expect(ls.aespiar).toHaveBeenCalledWith(5);
+    });
+
+    it("pueba espia", function () {
+        spyOn(ls,"aespiar").and.returnValue(6); //pongo un espia cuando llama a inicial. simulo que retorno 6
+        ls.inicial(4);
+        expect(ls.aespiar).toHaveBeenCalledWith(5);
+        expect(ls.inicial(4)).toBe(6);
+    });
+
+    it("pueba espia", function () {
+        ls.aespiar = jasmine.createSpy("pipipiar").and.returnValue(7); //pongo un espia cuando llama a inicial. simulo que retorno 6
+        ls.inicial(4);
+        expect(ls.aespiar).toHaveBeenCalledWith(5);
+        expect(ls.inicial(6)).toBe(7);
+    });
+
+
     //corro el test para ver si esta definido el servicio local
     it('prueba guardarenlocastorage', function () {
         //expect(ls).toBeDefined(); //verifica que este definida la factory
@@ -31,7 +82,7 @@ describe("probando modulo factories", function () {
             Estado: false, Respuesta: 'el nombre no es un string'
         }));
 
-        expect(ls.guardarEnLocalStorage('usuarios', undefined )).toEqual(jasmine.objectContaining({
+        expect(ls.guardarEnLocalStorage('usuarios', undefined)).toEqual(jasmine.objectContaining({
             Estado: false, Respuesta: 'el valor es undefined'
         }));
 
@@ -333,7 +384,7 @@ describe("probando modulo factories", function () {
 //            controller.username = '1';
 //            controller.password = '1';
 //
-//            //llamada a la funcion del controlador
+//            //aespiar a la funcion del controlador
 //            controller.doLogin();
 //        }));
 //
