@@ -1,8 +1,11 @@
 
-$ npm install -g karma-cli # Commandline Interface
+
 
 
 $ npm install karma karma-jasmine karma-phantomjs-launcher jasmine-core --save-dev
+
+
+$ npm install -g karma-cli # Commandline Interface
 
 
 $ mkdir tests
