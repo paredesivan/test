@@ -13,26 +13,20 @@ describe("probando modulo factories", function () {
     }));
 
     it("pueba espia", function () {
-        //spyOn(ls, "aespiar"); //pongo un espia cuando llama a inicial
-        //ls.inicial(4);
-        //expect(ls.aespiar).toHaveBeenCalledWith(5);
-        expect(ls.inicial(5)).toBe(7);
-
+        expect(ls.inicial(5)).toBe(true);
     });
 
     it("pueba espia", function () {
         spyOn(ls, "aespiar"); //pongo un espia cuando llama a inicial
         ls.inicial(4);
-        expect(ls.aespiar).toHaveBeenCalledWith(5); //y veo como inicial la llama a "aespiar"
+        expect(ls.aespiar).toHaveBeenCalledWith(5); //verifica que aespiar sea llamada con un 5 dentro de la funcion
 
     });
 
     it("pueba espia", function () {
         spyOn(ls, "aespiar");
         ls.inicial(4);
-        expect(ls.aespiar).toHaveBeenCalled(); //y veo como inicial la llama a "aespiar"
-        //expect(ls.aespiar()).toBe(6); //no va a andar porque el spyon devuleve undefined
-
+        expect(ls.aespiar).toHaveBeenCalled(); //devuelve true si inicial llama a "aespiar"
     });
 
     it("pueba espia", function () {
@@ -64,7 +58,7 @@ describe("probando modulo factories", function () {
 
 
     //corro el test para ver si esta definido el servicio local
-    it('prueba guardarenlocastorage', function () {
+    xit('prueba guardarenlocastorage', function () {
         //expect(ls).toBeDefined(); //verifica que este definida la factory
         //expect(ls.guardarEnLocalStorage).toBeDefined(); //verifica que este definida la funcion de la factory
         expect(ls.guardarEnLocalStorage(null, 5)).toEqual(jasmine.objectContaining({

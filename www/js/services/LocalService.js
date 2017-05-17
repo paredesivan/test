@@ -22,12 +22,16 @@ angular.module('starter.factories', ['LocalStorageModule'])
     .factory('BaseDatosService', function (localStorageService) {
         return {
             inicial: function (valor) {
-                return this.aespiar(++valor);
+                var add = valor + 1;
+                var respuesta = this.aespiar(add);
+                return respuesta;
             },
 
             aespiar: function (valor) {
-                valor = valor + 1;
-                return valor;
+
+                //if valor > 5 return true else return false;
+                return valor > 5;
+
             },
             guardarEnLocalStorage: function (nombre, valor) {
                 var msg = {};
