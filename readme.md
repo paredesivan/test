@@ -16,5 +16,5 @@ $ karma init tests/karma.config.js
 
 $ karma start tests/karma.config.js
 
-ideal agregar angularmocks:
+agregar angularmocks sino no va a andar nada:
   bower install angular-mocks
